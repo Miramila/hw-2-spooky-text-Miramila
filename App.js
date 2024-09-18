@@ -26,28 +26,16 @@ export default class classApp extends React.Component {
 
   handleChangeText = (text) => {
     this.setState({currentInput: text});
-    if (this.state.reverseText) {
-      this.setState({resultText: reverseText(text)});
-    } else {
-      this.setState({resultText: text});
-    }
+    this.setState({resultText: this.state.reverseText?reverseText(text):text});
   }
   
   handleReverseText = (value) => {
-    if (value) {
-      this.setState({resultText: reverseText(this.state.currentInput)});
-    } else {
-      this.setState({resultText: this.state.currentInput});
-    }
+    this.setState({resultText: value?reverseText(this.state.currentInput):this.state.currentInput});
     this.setState({reverseText: value});
   }
 
   handleReverseColors = (value) => {
-    if (value) {
-      this.setState({resultStyle: styles.resultTextDark});
-    } else {
-      this.setState({resultStyle: styles.resultTextLight});
-    }
+    this.setState({resultStyle: value?styles.resultTextDark:styles.resultTextLight});
     this.setState({reverseColors: value});
   }
 
